@@ -187,14 +187,14 @@ bool zugGueltig(const int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSp
             // Hier erfolgt jetzt Ihre Implementierung ...
             int curX = posX+i;
             int curY = posY+j;
-            if(spielfeld[curY][curX] == gegner)
+            if(aufSpielfeld(curX, curY) && spielfeld[curY][curX] == gegner)
             {
-                do
+                while (aufSpielfeld(curX,curY) && spielfeld[curY][curX] != 0)
                 {
                     curX += i;
                     curY += j;
-                    if(spielfeld[curY][curX] == aktuellerSpieler) return true;
-                } while (aufSpielfeld(curX,curY) && spielfeld[curY][curX] != 0);
+                    if(aufSpielfeld(curX, curY) && spielfeld[curY][curX] == aktuellerSpieler) return true;
+                }
             }
         }
     }
@@ -224,13 +224,13 @@ void zugAusfuehren(int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSpiel
             //
             int curX = posX+i;
             int curY = posY+j;
-            if(spielfeld[curY][curX] == gegner)
+            if(aufSpielfeld(curX, curY) && spielfeld[curY][curX] == gegner)
             {
                 do
                 {   //take another step in this direction
                     curX += i;
                     curY += j;
-                    if(spielfeld[curY][curX] == aktuellerSpieler)//found own piece?
+                    if(aufSpielfeld(curX, curY) && spielfeld[curY][curX] == aktuellerSpieler)//found own piece?
                     {
                         while(curX != posX || curY != posY)//retrace back to the starting position and convert all pieces in between to our own
                         {
@@ -269,8 +269,8 @@ bool menschlicherZug(int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSpi
         return false;
     }
 
-    int posX;
-    int posY;
+    int posX = 0;
+    int posY = 0;
     std::string symbolSpieler;
     if (aktuellerSpieler == 1)
     {
