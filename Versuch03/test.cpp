@@ -72,8 +72,21 @@ bool aufSpielfeldTest(const int posX, const int posY, const bool richtig, const 
     // ueberprueft, ob eine gegebene Position auf dem Spielfeld ist
     //
     // Hier erfolgt jetzt Ihre Implementierung ...
-
-    return 0;
+    std::cout << "Fuehre Test " << testNummer + 1 << " fuer 'aufSpielfeld()' aus ..." << std::endl;
+    std::cout << "----------------------------------" << std::endl << std::endl;
+    bool ergebnis = aufSpielfeld(posX, posY);
+    if(ergebnis == richtig)
+    {
+        std::cout << "Test " << testNummer + 1 << " bestanden!" << std::endl << std::endl;
+        return true;
+    }
+    std::cout << "Test " << testNummer + 1 << " fehlgeschlagen" << std::endl << std::endl;
+    if (AUSFUEHRLICH == 1)
+    {
+        std::cout << std::endl << "X: " << posX << "Y: " << posY << std::endl 
+                << "Richtiges Ergebnis: " << richtig << std::endl << "Geliefertes Ergebnis: " << ergebnis << std::endl;
+    }
+    return false;
 }
 
 
@@ -178,8 +191,13 @@ bool ganzenTestAusfuehren()
 
         for (int i = 0; i < 6; i++)
         {
-            // Hier erfolgt jetzt Ihre Implementierung (entsprechende Testfunktion aufrufen) ...
+            bool tmp_ergebnis = aufSpielfeldTest(position[i][0], position[i][1], korrektesErgebnis[i], i);
+            if (gesamtErgebnis == true && tmp_ergebnis == false)
+            {
+                gesamtErgebnis = false;
+            }
         }
+        std::cout << "Ende des Tests fuer 'aufSpielfeld()'" << std::endl << std::endl;
     }
     
 // ---------- TESTE ZUG GUELTIG ---------- //
