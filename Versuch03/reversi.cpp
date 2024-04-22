@@ -250,8 +250,15 @@ void zugAusfuehren(int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSpiel
 int moeglicheZuege(const int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSpieler)
 {
     // Hier erfolgt jetzt Ihre Implementierung ...
-    
-    return 0;
+    int moves = 0;
+    for(int j=0; j < GROESSE_Y; j++)
+    {
+        for(int i=0; i < GROESSE_X; i++)
+        {
+            if(zugGueltig(spielfeld, aktuellerSpieler,i,j)) moves++;
+        }
+    }
+    return moves;
 }
 
 
