@@ -222,10 +222,29 @@ void zugAusfuehren(int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSpiel
             // aehnlich wie die Funktion zugGueltig(), aber stellen Sie sicher, das alle gegnerischen Steine in
             // allen Richtungen in Ihre eigenen Steine umgewandelt werden
             //
-            // Hier erfolgt jetzt Ihre Implementierung ...
+            int curX = posX+i;
+            int curY = posY+j;
+            if(spielfeld[curY][curX] == gegner)
+            {
+                do
+                {   //take another step in this direction
+                    curX += i;
+                    curY += j;
+                    if(spielfeld[curY][curX] == aktuellerSpieler)//found own piece?
+                    {
+                        while(curX != posX || curY != posY)//retrace back to the starting position and convert all pieces in between to our own
+                        {
+                            curX -= i;
+                            curY -= j;
+                            spielfeld[curY][curX] = aktuellerSpieler;
+                        }
+                        break;
+                        
+                    }
+                } while (aufSpielfeld(curX,curY) && spielfeld[curY][curX] != 0);//if we walk off the board or there is an empty spot, no chance in this direction.
+            }
         }
     }
-
 }
 
 int moeglicheZuege(const int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSpieler)
