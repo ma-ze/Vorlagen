@@ -69,7 +69,7 @@ int main ()
         std::cout << "f(" << i << ") = " << fibonacci(i) << std::endl ;
     }
     std::cout << "results for n = 47:" << std::endl ;
-    //std::cout << fib_rec(47) << std::endl ; //comment this in if you are patient
+    std::cout << fib_rec(47) << std::endl ; //comment this in if you are patient
     std::cout << fibonacci(47) << std::endl ;
     std::cout << longfib(47) << std::endl ;
     std::cout << "fib(46):" << std::endl ;
