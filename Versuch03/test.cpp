@@ -580,7 +580,7 @@ bool ganzenTestAusfuehren()
 
 // ---------- TESTE MOEGLICHE ZUEGE ---------- //
     {
-        int eingabeFeld[2][8][8] {
+        int eingabeFeld[4][8][8] {
                 {   {0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0},
@@ -599,13 +599,31 @@ bool ganzenTestAusfuehren()
                     {0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0}
+                },
+                {   {0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 1, 0, 0, 0},
+                    {0, 0, 0, 1, 1, 0, 0, 0},
+                    {0, 0, 0, 2, 1, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0}
+                },
+                {   {0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 1, 1, 1, 0, 0},
+                    {0, 0, 0, 2, 1, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0}
                 }
             };
 
-        int spieler[2] = {1, 1};
-        int korrektesErgebnis[2] = {4, 5};
+        int spieler[4] = {1, 1,1,1};
+        int korrektesErgebnis[4] = {4, 5,3,3};
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 4; i++)
         {
             // Hier erfolgt jetzt Ihre Implementierung (entsprechende Testfunktion aufrufen) ...
             bool tmp_ergebnis = moeglicheZuegeTest(eingabeFeld[i], spieler[i], korrektesErgebnis[i], i);

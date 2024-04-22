@@ -320,9 +320,20 @@ void spielen(const int spielerTyp[2])
     // solange noch Zuege bei einem der beiden Spieler moeglich sind
     //
     // Hier erfolgt jetzt Ihre Implementierung ...
-    while(moeglicheZuege(spielfeld,1) || moeglicheZuege(spielfeld,2))
+    while(moeglicheZuege(spielfeld,1) > 0 || moeglicheZuege(spielfeld,2) > 0)
     {
-        menschlicherZug(spielfeld,aktuellerSpieler); //let current player make a move
+        //let current player make a move
+        switch (spielerTyp[aktuellerSpieler-1])
+        {
+        case MENSCH:
+            menschlicherZug(spielfeld,aktuellerSpieler); 
+            break;
+        case COMPUTER:
+            computerZug(spielfeld,aktuellerSpieler);
+            break;
+        default:
+            break;
+        }
         zeigeSpielfeld(spielfeld);
         if(moeglicheZuege(spielfeld, 3 - aktuellerSpieler) > 0) aktuellerSpieler = 3 - aktuellerSpieler; //if the other player has moves, switch players
     }
@@ -357,7 +368,7 @@ int main()
         }
         std::cout << std::endl << std::endl;
     }
-    int spielerTyp[2] = { MENSCH, MENSCH };  // Feld, das Informationen ueber den Typ des Spielers enthaelt. MENSCH(=1) oder COPMUTER(=2)
+    int spielerTyp[2] = { COMPUTER, COMPUTER };  // Feld, das Informationen ueber den Typ des Spielers enthaelt. MENSCH(=1) oder COPMUTER(=2)
     spielen(spielerTyp);
     //
     // Hier erfolgt jetzt Ihre Implementierung ...
