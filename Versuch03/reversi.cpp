@@ -55,11 +55,11 @@ void initialisiereSpielfeld(int spielfeld[GROESSE_Y][GROESSE_X])
 */
 void zeigeSpielfeld(const int spielfeld[GROESSE_Y][GROESSE_X])
 {
-    std::cout << "   | ";
+    std::cout << "    | ";
 
     //Start bei ASCII 65 = A
     for (int i = 65; i < 65 + GROESSE_X; ++i)
-        std::cout << ((char) i) << " | " ;
+        std::cout << ((char) i) << "  | " ;
 
     std::cout << std::endl;
 
@@ -67,23 +67,23 @@ void zeigeSpielfeld(const int spielfeld[GROESSE_Y][GROESSE_X])
     {
         for(int i = 0; i < GROESSE_X; ++i)
         {
-            std::cout << "---+";
+            std::cout << "----+";
         }
-        std::cout << "---+" << std::endl;
+        std::cout << "----+" << std::endl;
 
-        std::cout << " " << j + 1 << " |";
+        std::cout << " " << j + 1 << "  |";
         for (int i = 0; i < GROESSE_X; ++i)
         {
             switch (spielfeld[j][i])
             {
                 case 0:
-                    std::cout << "   " ;
+                    std::cout << "    " ;
                     break;
                 case 1:
-                    std::cout << " X ";
+                    std::cout << " 🔴 ";
                     break;
                 case 2:
-                    std::cout << " O ";
+                    std::cout << " ⚪ ";
                     break;
                 default:
                     std::cout << "Unzulaessige Daten im Spielfeld!" << std::endl;
@@ -274,11 +274,11 @@ bool menschlicherZug(int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSpi
     std::string symbolSpieler;
     if (aktuellerSpieler == 1)
     {
-        symbolSpieler = "X";
+        symbolSpieler = "🔴";
     }
     else
     {
-        symbolSpieler = "O";
+        symbolSpieler = "⚪";
     }
 
     while (true)
@@ -320,10 +320,24 @@ void spielen(const int spielerTyp[2])
     // solange noch Zuege bei einem der beiden Spieler moeglich sind
     //
     // Hier erfolgt jetzt Ihre Implementierung ...
-    
+    while(moeglicheZuege(spielfeld,1) || moeglicheZuege(spielfeld,2))
+    {
+        menschlicherZug(spielfeld,aktuellerSpieler); //let current player make a move
+        zeigeSpielfeld(spielfeld);
+        if(moeglicheZuege(spielfeld, 3 - aktuellerSpieler) > 0) aktuellerSpieler = 3 - aktuellerSpieler; //if the other player has moves, switch players
+    }
+    std::cout << "\nSpiel vorbei! ";
     switch (gewinner(spielfeld))
     {
-        // Hier erfolgt jetzt Ihre Implementierung ...
+        case 0:
+            std::cout << "Es ist unentschieden.";
+            break;
+        case 1:
+            std::cout << "Spieler 1 hat gewonnen!";
+            break;
+        case 2:
+            std::cout << "Spieler 2 hat gewonnen!";
+            break;
     }
 }
 
@@ -343,17 +357,8 @@ int main()
         }
         std::cout << std::endl << std::endl;
     }
-    
-    // Die folgenden drei Zeilen werden auskommentiert oder geloescht, nachdem Sie die Funktion spielen()
-    // implementiert haben (waeren sonst doppelt)
-    int spielfeld[GROESSE_Y][GROESSE_X];
-
-    initialisiereSpielfeld(spielfeld);
-
-    zeigeSpielfeld(spielfeld);
-
-    // int spielerTyp[2] = { COMPUTER, COMPUTER };  // Feld, das Informationen ueber den Typ des Spielers enthaelt. MENSCH(=1) oder COPMUTER(=2)
-    // spielen(spielerTyp);
+    int spielerTyp[2] = { MENSCH, MENSCH };  // Feld, das Informationen ueber den Typ des Spielers enthaelt. MENSCH(=1) oder COPMUTER(=2)
+    spielen(spielerTyp);
     //
     // Hier erfolgt jetzt Ihre Implementierung ...
     
