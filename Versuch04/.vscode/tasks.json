@@ -6,7 +6,13 @@
             "command": "/usr/bin/clang++",
             "args": [
                 "-fcolor-diagnostics",
+                "-fsanitize=address",
+                "-fno-omit-frame-pointer",
                 "-fansi-escape-codes",
+                "-std=c++11",
+                "-Wall",
+                "-Wextra",
+                "-Werror",
                 "-g",
                 "${fileDirname}/*.cpp",
                 "-o",
