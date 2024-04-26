@@ -7,7 +7,8 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "Vektor.h"
-
+const double height_m = 555.7 + 1.70;
+const double earthr_m = 6371.0;
 int main()
 {
     Vektor e1(1, 0, 0);
@@ -37,7 +38,40 @@ int main()
     std::cout << "Winkel zu e1: " << testvektor.winkel(e1) << "\n";
     std::cout << "Winkel zu e2: " << testvektor.winkel(e2) << "\n";
     std::cout << "Winkel zu e3: " << testvektor.winkel(e3) << "\n";
-    std::cout << "\n\n\n\n\n\n\n"; 
+    std::cout << "_________________________________________"; 
+    std::cout << "\n\n\n\n\n"; 
+
+    std::cout << "Wie weit entfernt ist der Horizont?\n";
+    std::cout << "-----------------------------------\n"; 
+    //cast a vector from the origin and from the vantage point
+    //calc angle between them
+    //if close to 90 degrees - thats the one!
+    //calc length of the last vector
+    //done bohne
+    Vektor vecVantagePoint(0,earthr_m + height_m, 0);
+    Vektor vecOrigin(0,earthr_m,0);
+    Vektor vecSightline = vecVantagePoint.sub(vecOrigin);
+    double angle_deg = 0;
+    double sight_angle_deg = 0;
+    double step_deg = 1;
+    while(sight_angle_deg < 90)
+    {   
+        angle_deg += step_deg;
+        double angle_rad = 1 * M_PI / 180;
+        vecOrigin.rotiereUmZ(angle_rad);
+        vecSightline = vecVantagePoint.sub(vecOrigin);
+        sight_angle_deg = vecSightline.winkel(vecOrigin);
+    }
+    std::cout << "vecOrigin: \n";
+    vecOrigin.ausgabe();
+    std::cout << "vecSightline: \n";
+    vecSightline.ausgabe();
+    std::cout << "angle (deg): \n";
+    std::cout << angle_deg;
+    std::cout << "\n";
+    std::cout << "sightline angle: " << sight_angle_deg << "\n";
+    double distance = vecSightline.laenge();
+    std::cout << "view dist: " << distance << "\n";    
     return 0;
 
 }

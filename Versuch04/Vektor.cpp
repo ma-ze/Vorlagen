@@ -70,7 +70,7 @@ double Vektor::skalarProd(const Vektor& input) const
 double Vektor::winkel(const Vektor& input) const
 {
     // Calculate the angle in radians
-    double angleRad = acos(skalarProd(input) / laenge() * input.laenge());
+    double angleRad = acos(skalarProd(input) / (laenge() * input.laenge()));
 
     // Convert the angle from radians to degrees
     return angleRad * 180.0 / M_PI;
