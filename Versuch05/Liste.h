@@ -23,6 +23,10 @@ public:
     bool empty();
     Student dataFront();
     void ausgabeVorwaerts() const;
+    void ausgabeRueckwaerts() const;
+    ListenElement* findElement(unsigned int matNr);
+    void deleteElement(unsigned int matNr);
+    void pushFront(Student pData);
 };
 
 #endif /*LISTE_H_*/
