@@ -90,6 +90,18 @@ bool aufSpielfeldTest(const int posX, const int posY, const bool richtig, const 
 }
 
 
+/**
+ * @brief Test for the zugGueltig() function.
+ * 
+ * 
+ * @param eingabeFeld The game board represented as a 2D array.
+ * @param spieler The player (1 or 2) making the move.
+ * @param posX The X-coordinate of the position.
+ * @param posY The Y-coordinate of the position.
+ * @param richtig The expected result of the move.
+ * @param testNummer The test number.
+ * @return True if the validation of the move was correct, false otherwise.
+ */
 bool zugGueltigTest(const int eingabeFeld[GROESSE_Y][GROESSE_X], const int spieler, const int posX,
                      const int posY, const bool richtig, const int testNummer)
 {
@@ -117,6 +129,15 @@ bool zugGueltigTest(const int eingabeFeld[GROESSE_Y][GROESSE_X], const int spiel
     return false;
 }
 
+/**
+ * Compares two game boards.
+ * 
+ * This function checks if the values at each position in the arrays are equal.
+ * 
+ * @param feld1 The first game boards to compare.
+ * @param feld2 The second game boards to compare.
+ * @return True if the game boards are equal, false otherwise.
+ */
 bool compareSpielfeld(int feld1[GROESSE_Y][GROESSE_X], const int feld2[GROESSE_Y][GROESSE_X])
 {
     for(int j=0; j < GROESSE_Y; j++)
@@ -128,7 +149,17 @@ bool compareSpielfeld(int feld1[GROESSE_Y][GROESSE_X], const int feld2[GROESSE_Y
     }
     return true;
 }
-
+/**
+ * @brief Test for the zugAusfuehren() function.
+ * 
+ * @param eingabeFeld The game board represented as a 2D array.
+ * @param ergebnisFeld The expected game board after the move.
+ * @param spieler The player (1 or 2) making the move.
+ * @param posX The X-coordinate of the position.
+ * @param posY The Y-coordinate of the position.
+ * @param testNummer The test number.
+ * @return True if the move was executed correctly, false otherwise.
+*/
 bool zugAusfuehrenTest(int eingabeFeld[GROESSE_Y][GROESSE_X], const int ergebnisFeld[GROESSE_Y][GROESSE_X],
                        const int spieler, const int posX, const int posY, const int testNummer)
 {
@@ -155,7 +186,15 @@ bool zugAusfuehrenTest(int eingabeFeld[GROESSE_Y][GROESSE_X], const int ergebnis
     }
     return false;
 }
-
+/**
+ * @brief Test for the moeglicheZuege() function.
+ * 
+ * @param eingabeFeld The game board represented as a 2D array.
+ * @param spieler The player (1 or 2) making the move.
+ * @param richtig The expected number of possible moves.
+ * @param testNummer The test number.
+ * @return True if the number of possible moves was correct, false otherwise.
+*/
 bool moeglicheZuegeTest(const int eingabeFeld[GROESSE_Y][GROESSE_X], const int spieler,
                          const int richtig, const int testNummer)
 {

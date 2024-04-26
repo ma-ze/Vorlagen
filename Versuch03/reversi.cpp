@@ -247,6 +247,13 @@ void zugAusfuehren(int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSpiel
     }
 }
 
+/**
+ * Counts the number of possible moves for the current player on the game board.
+ * 
+ * @param spielfeld The current game board.
+ * @param aktuellerSpieler The current player.
+ * @return The number of possible moves for the current player.
+ */
 int moeglicheZuege(const int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSpieler)
 {
     // Hier erfolgt jetzt Ihre Implementierung ...
@@ -260,7 +267,6 @@ int moeglicheZuege(const int spielfeld[GROESSE_Y][GROESSE_X], const int aktuelle
     }
     return moves;
 }
-
 
 bool menschlicherZug(int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSpieler)
 {
@@ -307,6 +313,12 @@ bool menschlicherZug(int spielfeld[GROESSE_Y][GROESSE_X], const int aktuellerSpi
 }
 
 
+/**
+ * Starts a game
+ * 
+ * @param spielerTyp An array of two integers representing the two players.
+ *                   1 is a human player, 2 is a computer player.
+ */
 void spielen(const int spielerTyp[2])
 {
     int spielfeld[GROESSE_Y][GROESSE_X];
@@ -350,6 +362,7 @@ void spielen(const int spielerTyp[2])
             std::cout << "Spieler 2 hat gewonnen!";
             break;
     }
+    std::cout << "\n";
 }
 
 int main()
