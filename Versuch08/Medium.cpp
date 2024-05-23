@@ -24,18 +24,18 @@ Medium::~Medium(void)
 }
 
 
-void Medium::ausgabe() const
+void Medium::ausgabe(std::ostream& out) const
 {
-    std::cout << "ID: " << ID << std::endl;
-    std::cout << "Titel: " << titel << std::endl;
+    out << "ID: " << ID << std::endl;
+    out << "Titel: " << titel << std::endl;
 
     if (status)
     {
-        std::cout << "Status : Das Medium ist seit dem " << datumAusgeliehen << " an " << personAusgeliehen.getName() << " ausgeliehen." << std::endl;
+        out << "Status : Das Medium ist seit dem " << datumAusgeliehen << " an " << personAusgeliehen.getName() << " ausgeliehen." << std::endl;
     }
     else
     {
-        std::cout << "Status: Medium ist zurzeit nicht verliehen." << std::endl;
+        out << "Status: Medium ist zurzeit nicht verliehen." << std::endl;
     }
 }
 
@@ -61,7 +61,7 @@ void Medium::zurueckgeben()
     if (status)
     {
         status = false;
-        std::cout << "Das Medium \"" << titel << "\" wurde zurückgegeben." << std::endl;
+        std::cout << "Das Medium \"" << titel << "\" wurde zurï¿½ckgegeben." << std::endl;
     }
     else
     {
@@ -72,4 +72,8 @@ void Medium::zurueckgeben()
 unsigned int Medium::getID()
 {
     return ID;
+}
+bool Medium::getStatus() const
+{
+    return status;
 }
