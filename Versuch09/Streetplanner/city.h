@@ -11,6 +11,10 @@ public:
     City(QString name, int x, int y);
     ~City(void);
     void draw(QGraphicsScene& scene);
+    void drawHighlight(QGraphicsScene& scene);
+    QString getName();
+    int getX();
+    int getY();
 private:
     QString name;
     int x;

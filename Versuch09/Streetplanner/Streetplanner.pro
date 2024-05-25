@@ -9,16 +9,34 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    abstractmap.cpp \
     city.cpp \
+    dialog.cpp \
+    dijkstra.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    map.cpp \
+    mapio.cpp \
+    mapionrw.cpp \
+    street.cpp \
+    streetdialog.cpp
 
 HEADERS += \
+    abstractmap.h \
     city.h \
-    mainwindow.h
+    dialog.h \
+    dijkstra.h \
+    mainwindow.h \
+    map.h \
+    mapio.h \
+    mapionrw.h \
+    street.h \
+    streetdialog.h
 
 FORMS += \
-    mainwindow.ui
+    dialog.ui \
+    mainwindow.ui \
+    streetdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
