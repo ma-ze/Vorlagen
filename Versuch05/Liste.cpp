@@ -155,7 +155,7 @@ void Liste::deleteElement(unsigned int matNr)
         back->setNext(nullptr);
         delete cursor;
     }
-    else
+    else if(cursor != nullptr)
     {
         cursor->getPrev()->setNext(cursor->getNext());
         cursor->getNext()->setPrev(cursor->getPrev());

@@ -285,7 +285,7 @@ int main()
             break;
             case 'S':
                 std::sort(studentenListe.begin(), studentenListe.end(), [](const Student& s1, const Student& s2) {
-                    return s1.getMatNr() < s2.getMatNr();
+                    return s1.getMatNr() < s2.getMatNr(); //sollte man eigentlich nicht so realisieren sondern mit den überladenen Operatoren!
                 });
                 break;
             // Beenden
